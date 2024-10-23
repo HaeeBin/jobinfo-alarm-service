@@ -1,5 +1,4 @@
 FROM apache/airflow:2.5.1
-LABEL Maintainer="wearelego@naver.com"
 
 USER root
 RUN apt-get update \
