@@ -1,0 +1,25 @@
+name: Deploy on Push
+
+on:
+  push:
+    branches:
+      - main  # main브랜치에 push 발생할 때마다 실행
+
+jobs:
+  deploy:
+    runs-on: ubunbu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # 리포지토리의 소스 코드 가져오기
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  # GitHub Secrets에 SSH 키를 등록해야 함
+          
+      - name: Deploy to Server
+        run: |
+          ssh user@your-server 'cd /path/to/project $$ git pull origin main'   # 서버에서 git pull 실행
+
+                                                                              
