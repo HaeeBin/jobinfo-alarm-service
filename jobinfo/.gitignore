@@ -3,3 +3,4 @@
 jobinfo/logs/
 *.log
 *.log.*
+.DS_Store
